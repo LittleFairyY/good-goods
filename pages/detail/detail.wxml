@@ -1,0 +1,81 @@
+<!--pages/detail/detail.wxml-->
+<view class="hw-detail">
+  <view class="hw-detail-body">
+  <view class="hw-detail-header">
+  <view class="hw-detail-header-home" bindtap='goHome'><image src="/ass/img/home1.png"></image></view>
+  <view class="hw-detail-header-cart" bindtap="goCart"><image src="/ass/img/cart1.png"></image><text class="{{allCount==='99+'?'more':''}}">{{allCount}}</text></view>
+  </view>
+    <view class="hw.detail-top">
+      <image src="{{detailInfo.imageUrl}}"></image>
+    </view>
+    <view class="hw-detail-info">
+      <view class="hw-detail-info-title">{{detailInfo.name}} | {{detailInfo.desc}}</view>
+      <view class="hw-detail-info-price">￥{{detailInfo.price}}<text>￥{{detailInfo.originPrice}}</text></view>
+      <view class="hw-detail-info-by">
+        <block>
+          <icon type="success" size="16" color="#999"/>
+          <text>30天无忧退货</text>
+        </block>
+        <block>
+          <icon type="success" size="16" color="#999"/>
+          <text>24小时内发货</text>
+        </block>
+        <block>
+          <icon type="success" size="16" color="#999"/>
+          <text>满88全场包邮</text>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="hw-detail-footer {{isAdd===true?'addCart':''}}">
+    <button type="warn" bindtap="showInfo" data-type="cart">加入购物车</button>
+    <button type="primary" bindtap="showInfo" data-type="pay">立即购买</button>
+    <view class="hw-detail-addcart">
+      <view class="hw-detail-cart-info">
+        <view class="hw-detail-cart-info-img">
+          <image
+            src="{{detailInfo.imageUrl}}"
+          ></image>
+        </view>
+        <view class="hw-detail-cart-info-text">
+          <view class="hw-detail-cart-info-text-price">￥39</view>
+          <view class="hw-detail-cart-info-sele">
+            已选择：<text>颜色：{{colorList[currentColor]}}</text>   <text>尺寸：{{sizeList[currentSize]}}</text>
+          </view>
+          <view class="hw-detail-cart-info-count">
+          <text bindtap='reduceCount' data-id="{{detailInfo.stockingNumber}}">-</text>
+          <text>{{count}}</text>
+          <text bindtap='addCount' data-id="{{detailInfo.stockingNumber}}">+</text>
+          </view>
+        </view>
+      </view>
+      <view class="hw-detail-cart-color">
+        <view class="hw-detail-cart-title">颜色</view>
+        <text 
+        class="{{currentColor===index?'active':''}}" 
+        wx:for="{{colorList}}"
+        wx:key="{{item}}"
+        bindtap='changeColor'
+        data-index="{{index}}">{{item}}</text>
+      </view>
+       <view class="hw-detail-cart-color">
+        <view class="hw-detail-cart-title">尺寸</view>
+        <text 
+        class="{{currentSize===index?'active':''}}" 
+        wx:for="{{sizeList}}" 
+        wx:key="{{item}}"
+        bindtap='changeSize'
+        data-index="{{index}}">{{item}}</text>
+      </view>
+      <view class="hw-detail-cart-btn">
+        <button type="warn" bindtap="addCart" wx:if="{{isCart===true}}">加入购物车</button>
+        <button type="primary" class="mall" bindtap="goBuy" wx:if="{{isCart===false}}">立即购买</button>
+      </view>
+      <view class="hw-detail-cart-info-cancel">
+          <icon type="cancel" size="25" color="#666" bindtap='cancelInfo'/>
+      </view>
+    </view>
+  </view>
+    
+</view>
+

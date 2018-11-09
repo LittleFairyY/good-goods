@@ -1,0 +1,107 @@
+<!--pages/home/home.wxml-->
+<view class="hw-home">
+<!-- 导航 -->
+  <view class="hw-home-nav">
+    <!-- <view 
+    class="hw-home-nav-item {{currentOrder===item.order?'active':''}}"
+    wx:for="{{navList}}" 
+    wx:key="{{index}}"
+    bindtap='changActive'
+    data-id='{{item.order}}'
+    >{{item.name}}</view> -->
+    <swiper 
+    indicator-dots="{{!indicatorDots}}" 
+    display-multiple-items="3" 
+    previous-margin="30rpx">
+    <swiper-item  
+    class="hw-home-nav-item {{currentOrder===item.order?'active':''}}"
+    wx:for="{{navList}}" 
+    wx:key="{{index}}"
+    bindtap='changActive'
+    data-id='{{item.order}}'>
+    {{item.name}}
+    </swiper-item>
+</swiper>
+  </view>
+  <!-- 主体 -->
+  <view class="hw-home-tj" wx:if="{{currentOrder==='tj'}}">
+    <view class="hw-body">
+      <!-- 轮播图 -->
+          <view class="hw-swiper">
+            <swiper 
+            indicator-dots="{{indicatorDots}}"
+              autoplay="{{autoplay}}" 
+              interval="{{interval}}" 
+              duration="{{duration}}"
+              circular="{{circular}}">
+              <block wx:for="{{imgUrls}}">
+                <swiper-item>
+                  <image src="{{item}}" class="slide-image" width="355" height="150"/>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+          <!-- 新品首发 -->
+          <view class="hw-home-main">
+          <view class="hw-home-subtitle">周一至周四-新品首发</view>
+            <view class="hw-home-newpro">
+              <view class="hw-home-newpro-pro">
+                <view class="hw-home-newpro-item"
+                wx:for="{{newProList}}" 
+                wx:key="index"
+                bindtap='toDetail'
+                data-id="{{item.stockingNumber}}">
+                  <view class="hw-home-newpro-img">
+                    <image src="{{item.imageUrl}}"></image>
+                    <view class="hw-home-newpro-i">
+                      <image
+                    src="http://www.myhaowu.com/img/icons/icon-discont-item.png"
+                    ></image>
+                    <text>30%</text>
+                    </view>
+                  </view>
+                  <view class="hw-home-newpeo-title">{{item.name}}</view>
+                  <view class="hw-home-newpeo-des">{{item.desc}}</view>
+                  <view class="hw-home-newpeo-price">￥{{item.price}}<text>￥{{item.originPrice}}</text></view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </view>
+      <view class="hw-home-nominate">
+        <view class="hw-home-nominate-text">为你推荐</view>
+        <view 
+        class="hw-home-nominate-item" 
+        wx:for="{{tuijianList}}" 
+        wx:key="item.itemId"
+        catchtap='toDetails'
+        data-id="{{item.stockingNumber}}">
+        <view class="hw-home-nominate-item-img">
+          <image src="{{item.imageUrl}}"></image>
+        </view>
+        <view class="hw-home-nominate-name">{{item.name}}</view>
+        <view class="hw-home-nominate-desc">{{item.desc}}</view>
+        <view class="hw-home-nominate-price"><text>￥{{item.minPrice}}</text> <button catchtap="addCart" data-id="{{item.stockingNumber}}">加入购物车</button></view>
+        </view>
+      </view>
+  </view>
+  <view wx:else class="hw-home-other">
+    <view class="hw-home-other-header">
+      <image src='{{currentImg}}'></image>
+    </view>
+    <view class="hw-home-order-main">
+      <view 
+      class="hw-home-order-item" 
+      wx:for="{{otherList}}" 
+      wx:key="{{index}}"
+      bindtap='goDetail'
+      data-id="{{item.itemId}}">
+        <view class="hw-home-order-item-img">
+          <image src="{{item.imageUrl}}"></image>
+        </view>
+        <view class="hw-home-order-item-name">{{item.name}}</view>
+        <view class="hw-home-order-item-price">￥{{item.minPrice}}</view>
+      </view>
+    </view>
+  </view>
+</view>

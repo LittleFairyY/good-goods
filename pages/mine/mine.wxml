@@ -1,0 +1,69 @@
+<!--pages/mine/mine.wxml-->
+<view class="hw-mine-body">
+  <view class="hw-mine-top">
+    <image src="/ass/img/personal-bg.png"></image>
+    <view class="hw-mint-top-info">
+      <view class="hw-mine-top-loginImg" wx:if="{{isLogin===false}}">
+        <image src="{{dataavatarUrl}}"></image>
+      </view>
+      <open-data wx:else class="hw-mine-top-loginImg" type="userAvatarUrl"></open-data>
+      <button wx:if="{{isLogin===false}}"
+      class="hw-mine-top-name" 
+      open-type="getUserInfo" 
+      bindgetuserinfo="bindGetUserInfo"
+      >{{nickName}}</button>
+      <open-data class="hw-mine-top-name" wx:else type="userNickName"></open-data>
+    </view>
+  </view>
+  <view class="hw-mine-myOder">   
+    <view class="hw-mine-myOder-text">我的订单</view>
+    <view class="hw-mine-myOder-icon">
+      <text>查看全部订单</text>
+      <image src="/ass/img/icon-right-arrow.png"></image>
+    </view>
+  </view>
+  <view class="hw-mine-nav">
+    <view class="hw-mine-nav-item">
+      <image src="/ass/img/icon-order-1.png"></image>
+      <text>待付款</text>
+    </view>
+    <view class="hw-mine-nav-item">
+      <image src="/ass/img/icon-order-2.png"></image>
+      <text>代发货</text>
+    </view>
+    <view class="hw-mine-nav-item">
+      <image src="/ass/img/icon-order-3.png"></image>
+      <text>已发货</text>
+    </view>
+    <view class="hw-mine-nav-item">
+      <image src="/ass/img/icon-order-4.png"></image>
+      <text>已完成</text>
+    </view>
+  </view>
+
+  <view class="hw-mine-other">
+    <view class="hw-mine-other-item"><text>我的优惠卷</text></view>
+    <view class="hw-mine-other-item"><text>已绑定手机号</text></view>
+    <view class="hw-mine-other-item"><text>联系客服</text></view>
+    <view class="hw-mine-other-item"><text>关于好物APP</text></view>
+    <view class="hw-mine-other-item"><text>下载好物App</text></view>
+  </view>
+  <view class="hw-mine-link">
+    <view class="hw-mine-link-text">享受更多贴心功能， 请下载好物App</view>
+    <view class="hw-min-link-nav">
+      <view class="hw-min-link-nav-item">
+        <image src='/ass/img/page-white.png'></image>
+        <text>居家干货</text>
+      </view>
+      <view class="hw-min-link-nav-item">
+        <image src='/ass/img/phone.png'></image>
+        <text>社区晒单</text>
+      </view>
+      <view class="hw-min-link-nav-item">
+        <image src='/ass/img/car.png'></image>
+        <text>订单追踪</text>
+      </view>
+    </view>
+  </view>
+</view>
+

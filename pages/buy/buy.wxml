@@ -1,0 +1,43 @@
+<!--pages/buy/buy.wxml-->
+<view class="hw-buy">
+   <view class="hw-buy-header">
+    <view class="hw-buy-header-home" bindtap='goHome'>
+      <image src="/ass/img/home1.png" bindtap='goHome'></image>
+    </view>
+  </view>
+  <view class="hw-buy-body">
+    <view class="hw-buy-body-subtitle" bindtap='toAddress'>
+      <text>请添加收货地址</text>
+      <image src="/ass/img/icon-right-arrow.png"></image>
+    </view>
+    <view class="hw-buy-body-subtitle">
+      <text>选择优惠卷</text>           <text>0张可用</text>
+    </view>
+    <view class="hw-buy-body-subtitle">
+      <text>商品总价</text>
+      <text>￥50</text>
+    </view>
+    <view class="hw-buy-body-subtitle">
+      <text>运费</text>
+      <text>￥50</text>
+    </view>
+    <view class="hw-buy-body-item" wx:for="{{buyList}}" wx:key="{{buyList}}">
+      <image src="{{item.imageUrl}}"></image>
+      <view class="hw-buy-body-proInfo">
+        <view class="hw-buy-body-proInfo-name">{{item.name}}</view>
+        <view class="hw-buy-body-proInfo-color">
+          <text>颜色：{{item.color}}</text>
+          <text>尺寸：{{item.size}}</text>
+        </view>
+        <view class="hw-buy-body-proInfo-price">￥{{item.price}}<text>X{{item.count}}</text></view>
+      </view>
+    </view>
+  </view>
+  <view class="hw-buy-footer">
+    <view class="hw-buy-text">
+    实际付款：
+      <text>￥{{allPrice}}</text>
+    </view>
+    <button type="primary">立即付款</button>
+  </view>
+</view>

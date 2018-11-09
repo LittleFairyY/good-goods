@@ -1,0 +1,56 @@
+<!--pages/cart/cart.wxml-->
+<view class="hw-cart">
+  <view class="hw-cart-body">
+    <view 
+    class="hw-cart-item"
+    wx:for="{{cart}}" 
+    wx:key="{{item.stockingNumber}}"
+    bindtap='goDetail'
+    data-id="{{item.stockingNumber}}">
+        <checkbox-group>
+          <label class="checkbox">
+            <checkbox  checked="{{item.isChecked}}" catchtap='changeChecked'data-id="{{item.stockingNumber}}"/>
+          </label>
+        </checkbox-group>
+        <image src="{{item.imageUrl}}"></image>
+        <view class="hw-cart-item-info">
+          <view class="hw-cart-item-info-name">{{item.name}}</view>
+          <view class="hw-cart-item-info-gg">
+            <text>颜色：{{item.color}}</text>
+            <text>尺寸：{{item.size}}</text>
+          </view>
+          <view class="hw-cart-item-info-count">
+            <text catchtap='reduceCount' data-id="{{item.stockingNumber}}">-</text>
+            <text>{{item.count}}</text>
+            <text catchtap='addCount' data-id="{{item.stockingNumber}}">+</text>
+          </view>
+        </view>
+        <view class="hw-cart-item-dele">
+          <image 
+          src="http://www.myhaowu.com/img/icons/icon-delete.png" 
+          catchtap='deleteCart' 
+          data-id="{{item.stockingNumber}}"></image>
+          <view class="hw-cart-item-price">￥{{item.price*item.count}}</view>
+        </view>
+    </view>
+  </view>
+  <view class="hw-cart-footer">
+    <view class="hw-cart-footer-allsele">
+    全选
+    <checkbox-group>
+      <label class="checkbox">
+        <checkbox  checked="{{allChecked}}" bindtap='allCheckChange'/>
+      </label>
+    </checkbox-group>
+    </view>
+    <view class="hw-cart-footer-text">
+      总计：
+      <view class="hw-cart-footer-price">
+      ￥{{allPrice}}
+      </view>
+    </view>
+    <view class="hw-cart-footer-btn">
+     <button type="primary" bindtap='tobuy'>立即下单</button>
+    </view>
+  </view>
+</view>
