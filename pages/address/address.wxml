@@ -1,2 +1,38 @@
 <!--pages/address/address.wxml-->
-<text>pages/address/address.wxml</text>
+<view class="hw-address">
+  <view class="hw-address-header">
+    <view class="hw-address-header-home">
+      <image src="/ass/img/home1.png" bindtap='goHome'></image>
+    </view>
+  </view>
+  <view class="hw-address-bg">
+    <image src='http://www.myhaowu.com/img/icons/Group1.png'></image>
+  </view>
+  <view class="hw-address-body">
+    <view class='hw-address-body-item' wx:for="{{addressList}}" wx:key="{{index}}">
+      <view class='hw-address-body-item-info'>
+        <view class='hw-address-body-item-info-title'>
+          <text>{{item.userName}}</text>
+          <text>{{item.userTell}}</text>
+        </view>
+        <view class="hw-address-body-item-info-address">{{item.userCity}}</view>
+      </view>
+      <view class='hw-address-body-item-handle'> 
+        <view class="hw-address-body-item-handle-btn">
+          <button catchtap='chooseAddress' data-id='{{index}}'>选择该地址</button>
+        </view>
+        <view class="hw-address-body-item-handle-edit" bindtap='edit' data-id="{{item.id}}">
+          <image src="http://www.myhaowu.com/img/icons/edit-Page.png"></image>
+          <text>编辑</text>
+        </view>
+        <view class="hw-address-body-item-handle-dele" bindtap='dele' data-id="{{item.id}}">
+          <image src="http://www.myhaowu.com/img/icons/icon-delete.png"></image>
+          <text>删除</text>
+        </view>    
+      </view>
+    </view>
+  </view>
+  <view class="hw-address-footer">
+    <button bindtap='tobuy' bindtap='addAddress'>+ 添加收货地址</button>
+  </view>
+</view>

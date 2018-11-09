@@ -3,7 +3,7 @@
   <view class="hw-detail-body">
   <view class="hw-detail-header">
   <view class="hw-detail-header-home" bindtap='goHome'><image src="/ass/img/home1.png"></image></view>
-  <view class="hw-detail-header-cart" bindtap="goCart"><image src="/ass/img/cart1.png"></image><text class="{{allCount==='99+'?'more':''}}">{{allCount}}</text></view>
+  <view class="hw-detail-header-cart" bindtap="goCart"><image src="/ass/img/cart1.png"></image><text class="{{allCount==='99+'?'more':''}}" wx:if="{{allCount>0}}">{{allCount}}</text></view>
   </view>
     <view class="hw.detail-top">
       <image src="{{detailInfo.imageUrl}}"></image>

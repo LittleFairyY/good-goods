@@ -1,0 +1,29 @@
+<!--pages/editAddress/editAddress.wxml-->
+<!--pages/address/address.wxml-->
+<view class="hw-editAddress">
+  <view class="hw-editAddress-header">
+    <view class="hw-editAddress-header-home">
+      <image src="/ass/img/home1.png" bindtap='goHome'></image>
+    </view>
+  </view>
+  <view class="hw-editAddress-body">
+    <view class="hw-editAddress-body-group">
+      <text>收货人：</text>
+      <input type="text" id='userName' value='{{userName}}' bindinput='bindinput'/>
+    </view>
+    <view class="hw-editAddress-body-group">
+      <text>联系电话：</text>
+      <input type="number" id='userTell' bindinput='bindinput' value='{{userTell}}'/>
+    </view>
+    <view class="hw-editAddress-body-group">
+      <text>省市：</text>
+      <input type="text" id='userCity' bindinput='bindinput' value='{{userCity}}'/>
+    </view>
+    <view class="hw-editAddress-body-group-textarea">
+      <textarea placeholder='填写详细信息'  bindinput='bindinput' id="userInfo" value='{{userInfo}}'/>
+    </view>
+  </view>
+  <view class="hw-editAddress-footer">
+    <button bindtap='save'>保存</button>
+  </view>
+</view>

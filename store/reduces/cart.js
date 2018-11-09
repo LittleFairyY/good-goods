@@ -2,7 +2,9 @@ const initStore={
   cart: wx.getStorageSync("hw-cart")||[],
   detailInfo:{},
   allCount:0,
-  buyList:[]
+  buyList:[],
+  isLogin: wx.getStorageSync("hw-isLogin"),
+  addressList: wx.getStorageSync("hw-addressList")||[]
 }
 export default (state=initStore,action)=>{
   switch (action.type){
@@ -72,6 +74,35 @@ export default (state=initStore,action)=>{
       return state
     case "BUY":
       state.buyList=action.data
+      return state
+    case "ALLCOUNT":
+      state.allCount=state.cart.reduce((result,item)=>{
+        result+=item.count
+        return result
+      },0)
+      return state
+    case "ADDADDRESS":
+      const hasAddress = state.addressList.some(item => `${item.id}` === action.data.currentId)
+      if (hasAddress){
+        state.addressList=state.addressList.map(item => {
+          if (`${item.id}` === action.data.currentId){
+            item = { ...action.data.data}
+            console.log(action.data.data)
+          }
+          return item
+        })
+      }else{
+        state.addressList.push(action.data.data)
+      }
+      wx.setStorageSync('hw-addressList', state.addressList)      
+      return state
+    case "DELEADDRESS":
+      state.addressList = state.addressList.filter(item=>item.id!==action.id)
+      wx.setStorageSync('hw-addressList', state.addressList)
+      return state
+    case "LOGIN":
+      state.isLogin=true
+      wx.setStorageSync('hw-isLogin', state.isLogin)
       return state
     default:
       return state

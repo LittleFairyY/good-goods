@@ -7,7 +7,9 @@ Page({
    */
   data: {
     buyList:[],
-    allPrice:0
+    allPrice:0,
+    address:{},
+    hasAddress:false
   },
 
   /**
@@ -15,6 +17,13 @@ Page({
    */
   onLoad: function (options) {
     this.getData()
+    if(options.id){
+      this.setData({
+        hasAddress:true,
+        address: { ...state.getState().cartReduce.addressList[options.id]}
+      })
+      console.log(this.data.address)
+    }
   },
 getData(){
   const allPrice = state.getState().cartReduce.buyList.reduce((reult,item)=>{

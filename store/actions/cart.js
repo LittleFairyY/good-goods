@@ -51,3 +51,27 @@ export const toBuy = (data) => {
     type: 'BUY'
   }
 }
+export const allCount = (data) => {
+  return {
+    data,
+    type: 'ALLCOUNT'
+  }
+}
+export const addAddress = (data) => {
+  console.log(data)
+  return {
+    data,
+    type: 'ADDADDRESS'
+  }
+}
+export const deleAddress = (id) => {
+  return {
+    id,
+    type: 'DELEADDRESS'
+  }
+}
+export const isLogin = () => {
+  return {
+    type: 'LOGIN'
+  }
+}

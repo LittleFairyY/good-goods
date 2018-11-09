@@ -6,9 +6,16 @@
     </view>
   </view>
   <view class="hw-buy-body">
-    <view class="hw-buy-body-subtitle" bindtap='toAddress'>
+    <view class="hw-buy-body-subtitle"  wx:if="{{hasAddress===false}}">
       <text>请添加收货地址</text>
-      <image src="/ass/img/icon-right-arrow.png"></image>
+      <image src="/ass/img/icon-right-arrow.png" bindtap='toAddress'></image>
+    </view>
+    <view class="hw-buy-body-subtitle address"  wx:else>
+      <view class="hw-buy-body-address">
+        <text>收货人：{{address.userName}}</text>
+        <text>{{address.userTell}}</text>
+      </view>
+      <view class="hw-sh">收货地址：{{address.userCity}}{{address.userInfo}} <text bindtap='toAddress'>更改地址</text></view>
     </view>
     <view class="hw-buy-body-subtitle">
       <text>选择优惠卷</text>           <text>0张可用</text>

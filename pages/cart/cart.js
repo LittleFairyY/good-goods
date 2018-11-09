@@ -2,15 +2,15 @@
 import state from "../../store/state.js"
 import { 
   cartAction,
-   countAction, 
-   reduceCount, 
-   addCount, 
-   deleteCart, 
-   changeChecked, 
-   allCheckChange,
+  countAction, 
+  reduceCount, 
+  addCount, 
+  deleteCart, 
+  changeChecked, 
+  allCheckChange,
   toBuy,
-   detailAction } from "../../store/actions/cart.js"
-
+  detailAction } from "../../store/actions/cart.js"
+const app=getApp()
 Page({
 
   /**
@@ -26,6 +26,8 @@ Page({
     */
   onShow: function () {
     state.subscribe(this.getCart)
+    app.setBadge()
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -82,14 +84,23 @@ Page({
     state.dispatch(changeChecked(e.currentTarget.dataset.id));
   },
   tobuy(){
-    const arr=this.data.cart.filter(item=>{
-      if(item.isChecked===true){
-        return item
-      }
-    })
-    state.dispatch(toBuy(arr))
-    wx.navigateTo({
-      url: '/pages/buy/buy'
-    })
+    if (this.data.allPrice!=0){
+      const arr = this.data.cart.filter(item => {
+        if (item.isChecked === true) {
+          return item
+        }
+      })
+      state.dispatch(toBuy(arr))
+      wx.navigateTo({
+        url: '/pages/buy/buy'
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '你还没有选择商品',
+        showCancel:false
+      })
+    }
+    
   }
 })

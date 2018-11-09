@@ -102,6 +102,7 @@ Page({
     })
   },
   onLoad(){
+    state.subscribe(app.setBadge)
     http.get('http://rap2api.taobao.org/app/mock/116389/api/v1/newPro')
     .then(resp=>{
       resp.data.data=resp.data.data.map(item => {
@@ -131,6 +132,9 @@ Page({
           }
         )
       }).catch(err => console.error(err))
+  },
+  onShow(){
+    app.setBadge()
   },
   addCart(e){
     const id=e.currentTarget.dataset.id

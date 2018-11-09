@@ -1,0 +1,72 @@
+
+page{
+  width:100%;
+  height:100%;
+}
+view{
+  box-sizing: border-box;
+}
+::-webkit-scrollbar{
+  display: none;
+}
+.hw-editAddress{
+  height:100%;
+  display:flex;
+  flex-direction: column;
+}
+.hw-editAddress-header{
+  height:60rpx;
+  width:100%;
+  display: flex;
+  background:#ff464e;
+  justify-content: space-between;
+  padding: 2rpx 40rpx 10rpx;
+}
+.hw-editAddress-header image{
+  width:50rpx;
+  height:50rpx;
+}
+.hw-editAddress-body{
+  flex:1;
+  overflow-x: hidden;
+}
+.hw-editAddress-body-group{
+  width:100%;
+  height:150rpx;
+  border-bottom:1rpx solid #eee;
+  display: flex;
+  font-size: 35rpx;
+  color:#666;
+  padding:0 30rpx;
+  align-items: center;
+}
+.hw-editAddress-body-group-textarea{
+  width:100%;
+  height:400rpx;
+  border-bottom:1rpx solid #eee;
+  display: flex;
+  font-size: 35rpx;
+  color:#666;
+  padding:0 30rpx;
+  align-items: center;
+}
+.hw-editAddress-body-group>text{
+  width:200rpx;
+}
+.hw-editAddress-body-group>input{
+  flex: 1;
+  height:100%;
+}
+.hw-editAddress-footer{
+  height:160rpx;
+  border-top:1px solid #eee;
+  padding:30rpx;
+
+}
+.hw-editAddress-footer>button{
+  line-height: 100rpx;
+  background:#fff;
+  border:1px solid #FFD914;
+  color:#FFD914
+
+}

@@ -29,9 +29,6 @@ Page({
     })
     this.getAllCount()
   },
-  onShow(){
-
-  },
   getAllCount(){
     const num = state.getState().cartReduce.cart.reduce((result, item) => {
       result += item.count;
@@ -114,7 +111,6 @@ Page({
         isCart: false
       })
     }
-    console.log(this.data.isCart)
   },
   addCart(){
     const color = this.data.colorList[this.data.currentColor]
@@ -123,7 +119,6 @@ Page({
     newDetail.color=color;
     newDetail.size=size;
     newDetail.newCount=this.data.count
-    // newDetail.type="ADD_CART"
     state.dispatch(cartAction(newDetail))
     this.setData({
       isAdd: false      

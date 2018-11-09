@@ -1,4 +1,8 @@
 // pages/mine/mine.js
+import state from "../../store/state.js"
+import {
+  isLogin
+} from "../../store/actions/cart.js"
 Page({
 
   /**
@@ -7,7 +11,7 @@ Page({
   data: {
     dataavatarUrl:'https://avatar.file.myhaowu.com/default-1?imageMogr2/thumbnail/150x',
     nickName:'点击登录',
-    isLogin:false
+    isLogin: state.getState().cartReduce.isLogin
   },
 
   /**
@@ -17,24 +21,13 @@ Page({
 
   },
   bindGetUserInfo(){
+    state.dispatch(isLogin())
+    
+  },
+  getData(){
     this.setData({
-      isLogin:true
+      isLogin: state.getState().cartReduce.isLogin
     })
-    // wx.getSetting({
-    //   success:(res)=> {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       wx.getUserInfo({
-    //         success:(res)=> {
-    //           const userInfo = res.userInfo
-    //           this.setData({
-    //             nickName: userInfo.nickName,
-    //             avatarUrl: userInfo.avatarUrl
-    //           })
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -47,7 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    state.subscribe(this.getData)
   },
 
   /**

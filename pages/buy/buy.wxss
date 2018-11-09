@@ -6,6 +6,9 @@ page{
 view{
   box-sizing: border-box;
 }
+::-webkit-scrollbar{
+  display: none;
+}
 .hw-buy{
   height:100%;
   display:flex;
@@ -22,9 +25,6 @@ view{
 .hw-buy-header image{
   width:50rpx;
   height:50rpx;
-}
-.hw-buy-header-cart{
-  position: relative
 }
 .hw-buy-body{
   flex:1;
@@ -107,4 +107,20 @@ view{
   padding:0 30rpx;
   line-height: 60rpx;
   color:#666;
+}
+.hw-buy-body-address{
+  display: flex;
+  width:100%;
+  justify-content: space-between;
+}
+.address{
+  height:160rpx;
+  display: block;
+}
+.hw-sh{
+  margin-top:50rpx;
+}
+.hw-sh>text{
+  float:right;
+  color:red;
 }
